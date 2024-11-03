@@ -1,0 +1,9 @@
+mamba-ssm
+scipy
+PyWavelets
+pesq==0.0.4
+pystoi==0.3.3
+tensorboard==2.13.0
+
+
+
