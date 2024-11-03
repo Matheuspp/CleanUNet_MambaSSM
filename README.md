@@ -51,10 +51,6 @@ The main dataset used in our experiments is the **Valentini dataset**, which is 
 3. **Process the Audio Files:**
 
     - Use the provided script `process_speech_dataset.py` to crop the audio clips to your desired length. This script helps in standardizing the audio files for training.
-    - Example usage:
-        ```bash
-        python process_speech_dataset.py --input_dir ./datasets --output_dir ./datasets/processed --length 2
-        ```
 
 ## Configuration
 
@@ -123,10 +119,6 @@ python3 train.py -c configs/your_config.json
 - Replace `your_config.json` with the path to your configuration JSON file.
 - The training script will read the configurations and start the training process accordingly.
 
-**Tips:**
-
-- Monitor the training progress through the logs generated in the directory specified in the configuration.
-- Adjust the `batch_size_per_gpu` and `learning_rate` in the configuration file based on your hardware capabilities.
 
 ## Evaluation
 
@@ -135,11 +127,10 @@ Before evaluating the model's performance, generate enhanced audio samples using
 **Generating Enhanced Samples:**
 
 ```bash
-python3 denoise.py -c configs/your_config.json -subset testing
+python3 denoise.py -c configs/your_config.json 
 ```
 
 - The `-c` flag specifies your configuration JSON file.
-- The `-subset` flag indicates which subset of the data to process (e.g., `testing`).
 
 A directory will be created inside the predefined folder specified in the JSON configuration file. Once the enhanced samples are generated, proceed to evaluate the model.
 
@@ -154,31 +145,12 @@ python3 python_eval.py -e "path_to_enhanced_samples" -t "path_to_clean_test_samp
 
 The evaluation script computes metrics to assess the model's performance on the test data.
 
-## Pre-trained Models
 
-For convenience, we provide pre-trained models that you can use to replicate the results or as a starting point for further training.
 
 **Download Pre-trained Models:**
 
-You can download the pre-trained models and listen the enhanced audio samples from [this Google Drive link](https://drive.google.com/drive/folders/10uQAdmaRtwYJNMIXe0_WV3GHGIcRbadu?usp=sharing).
+You can download the pre-trained models and enhanced audio samples from [this Google Drive link](https://drive.google.com/drive/folders/10uQAdmaRtwYJNMIXe0_WV3GHGIcRbadu?usp=sharing).
 
-**Using the Pre-trained Models:**
-
-1. **Download the Model Files:**
-
-    - Navigate to the provided Google Drive link and download the checkpoint files.
-
-2. **Place the Checkpoints:**
-
-    - Place the downloaded checkpoint files into the appropriate directory specified in your configuration (e.g., `./logs/experiments/exp1/checkpoint`).
-
-3. **Update Configuration:**
-
-    - Modify the `ckpt_iter` parameter in your configuration's `log` section to match the iteration number of the downloaded checkpoint (or set it to `"max"` to automatically load the latest checkpoint).
-
-4. **Run Inference or Continue Training:**
-
-    - Use the pre-trained model for inference using the `denoise.py` script or continue training from the checkpoint.
 
 ## References
 
@@ -186,6 +158,3 @@ You can download the pre-trained models and listen the enhanced audio samples fr
 - **Original Codebase:** [PyTorch Implementation of CleanUNet](https://github.com/NVIDIA/CleanUNet)
 - **Valentini Dataset:** [Valentini-Botinhao Dataset](https://datashare.ed.ac.uk/handle/10283/2791)
 
----
-
-Feel free to open an issue or submit a pull request if you have any questions or suggestions.
