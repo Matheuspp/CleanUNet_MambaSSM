@@ -22,6 +22,7 @@ To set up the environment for this project, you need to install the necessary de
 ```bash
 conda create -n speechdenoiser python=3.8
 conda activate speechdenoiser
+pip install torch==2.3.1 torchvision==0.18.1 torchaudio==2.3.1 --index-url https://download.pytorch.org/whl/cu121
 ```
 
 **Step 2: Install Python dependencies**
